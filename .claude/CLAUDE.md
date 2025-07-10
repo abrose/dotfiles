@@ -69,6 +69,7 @@ Avoid it for routine responses due to latency. Text is preferred for quick inter
 - Write tests before writing the implementation code
 - Only write enough code to make the failing test pass
 - Refactor code continuously while ensuring tests still pass
+- Start with minimal TDD implementations - When writing the first failing test in TDD, avoid making too many assumptions about the implementation. Keep it simple and inline first, then extract utilities only if needed
 
 ### TDD Implementation Process
 

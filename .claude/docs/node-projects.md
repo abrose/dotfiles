@@ -27,3 +27,4 @@
 ## Code Formatting Guidelines
 
 - Always run `pnpm format` on all edited files to fix the formatting according to the defined rules before using 'git add' or 'git commit'.
+- Run formatters before comprehensive checks - When ready to commit, run ```pnpm format``` before ```pnpm check-all``` to avoid multiple rounds of fixing formatting issues
