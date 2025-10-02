@@ -19,6 +19,15 @@ ZSH_TMUX_CONFIG="$HOME/.tmux.conf"
 source ~/.bin/tmuxinator.zsh
 export TMUXINATOR_CONFIG="$HOME/.config/tmuxinator"
 
+# Tmuxinator session quick switcher
+tx() {
+  if [ $# -eq 0 ]; then
+    tmuxinator list
+  else
+    tmuxinator start $1
+  fi
+}
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -103,6 +112,7 @@ plugins=(
   docker
   kubectl
   tmux
+  tmuxinator
   aws-param # procure.ai
   prc-service # procure.ai
   prc-secret # procure.ai
@@ -204,6 +214,7 @@ __git_other_files () {
 #
 # Example aliases
 alias zshconfig="vim ~/.zshrc"
+alias zshreload="source ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias st="git status"
 alias gsm="git switch main"
