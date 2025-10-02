@@ -203,8 +203,8 @@ __git_other_files () {
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshconfig="vim ~/.zshrc"
+alias ohmyzsh="vim ~/.oh-my-zsh"
 alias st="git status"
 alias gsm="git switch main"
 alias rr="ranger"
@@ -212,6 +212,11 @@ alias ll="ls -la"
 alias vim="nvim"
 alias awsp="source _awsp"
 alias top="btm"
+alias mux="tmuxinator"
+alias txs="tmuxinator start"
+alias txe="tmuxinator edit"
+alias txl="tmuxinator list"
+alias txd="tmuxinator delete"
 
 # Pyenv initialization
 if command -v pyenv 1>/dev/null 2>&1; then
