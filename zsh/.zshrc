@@ -1,16 +1,5 @@
-# Q pre block. Keep at the top of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
-# If you come from bash you might have to change your $PATH.
 export PATH=$HOME/.volta/bin:$HOME/bin:$HOME/.local/bin:/usr/local/bin:/opt/homebrew/bin/cwebp:${KREW_ROOT:-$HOME/.krew}/bin:/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH
 
-# Automatically start tmux
-ZSH_TMUX_AUTOSTART=true  # Set to true if you want tmux to start automatically
-
-# Automatically connect to a previous session if it exists
-ZSH_TMUX_AUTOCONNECT=true
-
-# Automatically close the terminal when tmux exits
-ZSH_TMUX_AUTOQUIT=false
 
 # Set the tmux config file location
 ZSH_TMUX_CONFIG="$HOME/.tmux.conf"
@@ -113,11 +102,11 @@ plugins=(
   kubectl
   tmux
   tmuxinator
-  aws-param # procure.ai
-  prc-service # procure.ai
-  prc-secret # procure.ai
-  prc-customers-sync # procure.ai
-  py-dep-update # procure.ai
+  aws-param # pai
+  prc-service # pai
+  prc-secret # pai
+  prc-customers-sync # pai
+  py-dep-update # pai
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -149,13 +138,6 @@ fi
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
 export EDITOR='nvim'
 
 # Compilation flags
@@ -163,49 +145,6 @@ export EDITOR='nvim'
 
 GIT_COMPLETION_CHECKOUT_NO_GUESS=1
 GIT_COMPLETION_SHOW_ALL=1
-
-# Custom git autocompletion helpers
-# See: https://www.reddit.com/r/zsh/comments/ass2tc/gitadd_completion_with_full_paths_listed_at_once/
-_git_status_files () {
- local -a status_files=( ${"${(0)"$(git status -z)"}"} )
- local -a unstaged_files
- local -a staged_files
-for entry in ${status_files}; do
-   local stts=$entry[1,3]
-   local file=$entry[4,-1]
-
-   if [[ $stts[2] != ' ' ]]
-   then
-     unstaged_files+=$file
-   fi
-    if [[ $stts[1] != ' ' ]] && [[ $stts[1] != '?' ]]
-    then
-      staged_files+=$file
-    fi
-  done
-
-  _describe -t unstaged 'Unstaged' unstaged_files && ret=0
-  _describe -t staged 'Staged' staged_files && ret=0
-
-  return $ret
-}
-
-__git_staged_files () {
-  local -a staged_files=( ${"${(0)"$(git diff-index -z --name-only --no-color --cached HEAD)"}"} )
-  _describe -t staged 'Staged files' staged_files && ret=0
-  return $ret
-}
-
-__git_modified_files () {
-  __git_status_files
-}
-
-__git_treeish-to-index_files () {
-  __git_staged_files
-}
-
-__git_other_files () {
-}
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -258,9 +197,6 @@ export PATH=$JAVA_HOME/bin:$PATH
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 
-[[ -f "$HOME/fig-export/dotfiles/dotfile.zsh" ]] && builtin source "$HOME/fig-export/dotfiles/dotfile.zsh"
-
-
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:$HOME/.cache/lm-studio/bin"
 
@@ -295,6 +231,3 @@ bindkey -M menuselect '^[[D' backward-char                # Left
 
 # Direnv hook
 eval "$(direnv hook zsh)"
-
-# Q post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
