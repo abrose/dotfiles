@@ -231,3 +231,18 @@ bindkey -M menuselect '^[[D' backward-char                # Left
 
 # Direnv hook
 eval "$(direnv hook zsh)"
+
+# Override aws_prompt_info with profile and region
+function aws_prompt_info() {
+  local _aws_profile="${AWS_PROFILE:-${AWS_DEFAULT_PROFILE:-default}}"
+  local _aws_region="${AWS_DEFAULT_REGION:-${AWS_REGION:-us-east-1}}"
+
+  if [[ -n "$_aws_profile" ]]; then
+    echo "%{$fg[yellow]%}☁️  %{$fg[magenta]%}${_aws_profile}%{$fg[dim]%}/%{$fg[cyan]%}${_aws_region}%{$reset_color%}"
+  fi
+}
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/abrose/.cache/lm-studio/bin"
+# End of LM Studio CLI section
+
