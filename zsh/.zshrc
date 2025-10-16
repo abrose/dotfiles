@@ -8,14 +8,49 @@ ZSH_TMUX_CONFIG="$HOME/.tmux.conf"
 source ~/.bin/tmuxinator.zsh
 export TMUXINATOR_CONFIG="$HOME/.config/tmuxinator"
 
-# Tmuxinator session quick switcher
-tx() {
-  if [ $# -eq 0 ]; then
-    tmuxinator list
-  else
-    tmuxinator start $1
-  fi
+# Tmux session switcher with preview
+tms() {
+    # If not in tmux, start/attach session
+    if [ -z "$TMUX" ]; then
+        # Get all sessions
+        session=$(tmux list-sessions -F "#{session_name}: #{session_windows} windows #{?session_attached,(attached),}" 2>/dev/null | fzf --height 40% --reverse --prompt="Select session: ")
+        
+        if [ -n "$session" ]; then
+            session_name=$(echo $session | cut -d: -f1)
+            tmux attach -t "$session_name"
+        fi
+    else
+        # If in tmux, switch to selected session
+        session=$(tmux list-sessions -F "#{session_name}: #{session_windows} windows #{?session_attached,(attached),}" | fzf --height 40% --reverse --prompt="Switch to session: ")
+        
+        if [ -n "$session" ]; then
+            session_name=$(echo $session | cut -d: -f1)
+            tmux switch-client -t "$session_name"
+        fi
+    fi
 }
+
+# Quick session jump with preview of windows
+tmux-jump() {
+    if [ -z "$TMUX" ]; then
+        echo "Not in a tmux session"
+        return 1
+    fi
+    
+    local session=$(tmux list-sessions -F "#{session_name}" | \
+        fzf --preview 'tmux list-windows -t {} -F "  #{window_index}:#{window_name} (#{window_panes} panes)"' \
+            --preview-window right:40% \
+            --header "Current: $(tmux display-message -p '#S')" \
+            --prompt "Jump to session: ")
+    
+    if [ -n "$session" ]; then
+        tmux switch-client -t "$session"
+    fi
+}
+
+# Bind to alias for quick access
+alias tj='tmux-jump'
+alias ts='tms'
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
