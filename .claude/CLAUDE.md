@@ -92,7 +92,8 @@ Avoid it for routine responses due to latency. Text is preferred for quick inter
 
 # Context Awareness
 - In ALL your answers, reserve the first line for a status and context indication bar. This bar should help me to understand if we're still both on the same page and that you remember all relevant instructions.
-    - The format of this line is the following: | 🤖 <short description of the current task> | <current workmode indication> |<space separated state indications defined in other places, for example indications from the TDD rules> |
-    - Example: "| 🤖 Event processor - ingesting event | 🛠️ | TDD: 🧨 |"  - We're implementing the event processor module, now focused on the event ingestion, we're in the code mode (🛠️) and currently in the red TDD phase (🧨)
-    - Example: "| 🤖 Implementing event processor | 🧠 | - |" - We're working on the event processor, currently brainstorming ideas and options, and there are no active sub-states (We're not in TDD yet)
-    - Example: "| 🤖 Implementing event processor | 📋 | - |" - We're working on the event processor, currently planning the approach. The're no active sub-states.
+    - The format of this line is the following: | 🤖 <short description of the current task> | <current workmode indication> | <current_skill_indicator_and_title> | <space separated state indications defined in other places, for example indications from the TDD rules> |
+    - Example: "| 🤖 Event processor - ingesting event | 🛠️ | - |TDD: 🧨 |"  - We're implementing the event processor module, now focused on the event ingestion, we're in the code mode (🛠️) and currently in the red TDD phase (🧨)
+    - Example: "| 🤖 Implementing event processor      | 🧠 | - | -      |" - We're working on the event processor, currently brainstorming ideas and options, and there are no active sub-states (We're not in TDD yet)
+    - Example: "| 🤖 Implementing event processor      | 📋 | - | -      |" - We're working on the event processor, currently planning the approach. The're no active sub-states.
+    - Example: "| 🤖 Translating about section from German to English | 🛠️ | ✍️ **Website Copywriter** | - |" - We're writing content, currently in code mode (🛠️), the website copywriter skill is active, and we're translating the about section from German to English.
