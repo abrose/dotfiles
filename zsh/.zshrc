@@ -203,6 +203,8 @@ alias txe="tmuxinator edit"
 alias txl="tmuxinator list"
 alias txd="tmuxinator delete"
 
+alias fuck="git clean -fd && git restore ."
+
 # Pyenv initialization
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
@@ -276,6 +278,18 @@ function aws_prompt_info() {
     echo "%{$fg[yellow]%}☁️  %{$fg[magenta]%}${_aws_profile}%{$fg[dim]%}/%{$fg[cyan]%}${_aws_region}%{$reset_color%}"
   fi
 }
+
+###################################
+# Customer Project related stuff
+#
+
+# ProcureAi
+
+# Required for the weasyprint lib
+
+## END of Customer related stuff
+###################################
+
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/abrose/.cache/lm-studio/bin"
