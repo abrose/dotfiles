@@ -181,7 +181,7 @@ alias txd="tmuxinator delete"
 
 alias fuck="git clean -fd && git restore ."
 
-alias claudify="./Users/abrose/workspace/claude-container/run-claude.sh"
+alias claudify="$HOME/workspace/claude-container/run-claude.sh"
 
 # Pyenv initialization
 if command -v pyenv 1>/dev/null 2>&1; then
@@ -282,6 +282,6 @@ function aws_prompt_info() {
 
 
 # Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/abrose/.cache/lm-studio/bin"
+export PATH="$PATH:$HOME/.cache/lm-studio/bin"
 # End of LM Studio CLI section
 
