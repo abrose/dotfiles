@@ -142,36 +142,12 @@ plugins=(
   prc-secret # pai
   prc-customers-sync # pai
   py-dep-update # pai
+  fast-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
 
-export ZPLUG_HOME=/opt/homebrew/opt/zplug
-
-source $ZPLUG_HOME/init.zsh
-
-zplug "mafredri/zsh-async", from:github
-#zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
-zplug "zdharma/fast-syntax-highlighting", as:plugin, defer:2
-#zplug "zsh-users/zsh-autosuggestions", as:plugin, defer:2
-zplug "popstas/zsh-command-time", as:plugin
-
-zplug load
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-
-
 # User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
 
 export EDITOR='nvim'
 
@@ -205,17 +181,19 @@ alias txd="tmuxinator delete"
 
 alias fuck="git clean -fd && git restore ."
 
+alias claudify="./Users/abrose/workspace/claude-container/run-claude.sh"
+
 # Pyenv initialization
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
 # Init fzf
-source <(fzf --zsh)
+# Regenerate if fzf binary is newer than the cache
+if [[ ! -f ~/.fzf.zsh || $(which fzf) -nt ~/.fzf.zsh ]]; then
+  fzf --zsh > ~/.fzf.zshfi
+fi
+  source ~/.fzf.zsh
 
 source $HOME/.docker/init-zsh.sh || true # Added by Docker Desktop
 
@@ -237,7 +215,9 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:$HOME/.cache/lm-studio/bin"
 
-eval "$(gh copilot alias -- zsh)"
+# eval "$(gh copilot alias -- zsh)"
+ghcs() { unset -f ghcs ghce; eval "$(gh copilot alias -- zsh)"; ghcs "$@"; }
+ghce() { unset -f ghcs ghce; eval "$(gh copilot alias -- zsh)"; ghce "$@"; }
 
 # pnpm
 export PNPM_HOME="$HOME/Library/pnpm"
@@ -268,6 +248,16 @@ bindkey -M menuselect '^[[D' backward-char                # Left
 
 # Direnv hook
 eval "$(direnv hook zsh)"
+
+# Custom interactive search using ripgrep and fzf
+vg() {
+  rg -F --color=always --line-number "$1" | \
+    fzf --ansi --exact --delimiter ':' \
+        --preview 'bat --color=always {1} --highlight-line {2}' \
+        --preview-window '+{2}-10' \
+        --bind 'enter:execute(nvim {1} +{2})' \
+        --bind 'ctrl-o:become(nvim {1} +{2})'
+}
 
 # Override aws_prompt_info with profile and region
 function aws_prompt_info() {
