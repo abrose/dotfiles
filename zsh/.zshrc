@@ -67,7 +67,7 @@ export AWS_DEFAULT_REGION="eu-central-1"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="fino"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -170,7 +170,7 @@ alias st="git status"
 alias gsm="git switch main"
 alias rr="ranger"
 alias ll="ls -la"
-alias vim="nvim"
+alias vim='NVIM_APPNAME=nvim-lazyvim nvim' 
 alias awsp="source _awsp"
 alias top="btm"
 alias mux="tmuxinator"
@@ -280,6 +280,9 @@ function aws_prompt_info() {
 ## END of Customer related stuff
 ###################################
 
+
+eval "$(zoxide init zsh)"
+eval "$(atuin init zsh --disable-up-arrow)"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:$HOME/.cache/lm-studio/bin"
