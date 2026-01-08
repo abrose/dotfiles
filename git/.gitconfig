@@ -1,0 +1,44 @@
+[user]
+  name = Alfred Brose
+  email = hello@alfredbrose.dev
+	signingkey = A40C9CD7E6BD418B
+
+[includeIf "gitdir:~/workspace/clients/"]
+  path = ~/workspace/clients/.gitconfig
+
+[alias]
+  hist = log --graph --pretty=format:'%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(green)(%cr) %C(cyan)<%an>%Creset' --abbrev-commit
+  lg   = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(red)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+  st = status
+  ci = commit
+  co = checkout
+  d  = difftool
+  pl = pull --rebase
+	commit-retry = !git commit -eF .git/COMMIT_EDITMSG
+	clean-branches = !git fetch --prune && git branch -vv | grep \": gone]\" | grep -v \"\\*\" | awk \"{print \\$1}\" | xargs -r git branch -D
+[diff]
+  tool = vimdiff
+[difftool]
+  prompt = false
+[core]
+  editor = nvim
+	pager = delta
+[push]
+  autoSetupRemote = true
+[init]
+	defaultBranch = main
+[commit]
+	gpgsign = true
+[tag]
+	gpgSign = true
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+  side-by-side = true
+  line-numbers = true
+[merge]
+  tool = vimdiff
+  conflictstyle = zdiff3
+[mergetool "vimdiff"]
+  cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
