@@ -8,8 +8,8 @@ return {
             hidden = true, -- Show hidden/dotfiles by default
             -- ignored = true,  -- Optionally also show gitignored files
             layout = {
-              preset = "default",
-              preview = true,
+              preset = "sidebar",
+              preview = "main",
             },
           },
         },
