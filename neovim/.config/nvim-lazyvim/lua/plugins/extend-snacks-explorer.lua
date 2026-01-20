@@ -10,6 +10,11 @@ return {
             layout = {
               preset = "sidebar",
               preview = "main",
+              layout = {
+                width = 0.2, -- 20% of screen width
+                min_width = 40,
+                max_width = 60,
+              },
             },
           },
         },

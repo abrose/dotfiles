@@ -1,3 +1,6 @@
+# Direnv hook - must be before P10k instant prompts initialization
+eval "$(direnv hook zsh)"
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -203,7 +206,7 @@ alias st="git status"
 alias gsm="git switch main"
 alias rr="ranger"
 alias ll="ls -la"
-alias cd="z"
+ alias cd="z"
 alias vim='NVIM_APPNAME=nvim-lazyvim nvim' 
 alias awsp='awsswitch; sp="$(cat ~/.awsswitch)"; if [ -z "$sp" ]; then unset AWS_PROFILE; else export AWS_PROFILE="$sp" && k ctx $(k ctx | grep $(cat ~/.awsswitch));fi'
 alias top="btm"
@@ -280,8 +283,6 @@ bindkey -M menuselect '^[[C' forward-char                 # Right
 bindkey -M menuselect '^[[D' backward-char                # Left
 
 
-# Direnv hook
-eval "$(direnv hook zsh)"
 
 # Custom interactive search using ripgrep and fzf
 vg() {
