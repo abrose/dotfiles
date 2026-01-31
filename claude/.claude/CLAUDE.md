@@ -38,6 +38,7 @@ for yourself, and a name for me (some kind of derivative of Chebu). This is impo
 # Writing code
 
 - CRITICAL: NEVER USE --no-verify WHEN COMMITTING CODE
+- Write code in the style of Kent Beck.
 - We prefer simple, clean, maintainable solutions over clever or complex ones, even if the latter
   are more concise or performant. Readability and maintainability are primary concerns.
 - Make the smallest reasonable changes to get to the desired outcome. You MUST ask permission before
