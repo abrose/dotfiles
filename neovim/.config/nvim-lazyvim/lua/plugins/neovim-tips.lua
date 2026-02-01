@@ -1,5 +1,6 @@
 return {
   "saxon1964/neovim-tips",
+  enabled = false,
   version = "*", -- Only update on tagged releases
   lazy = false, -- Load on startup for daily tip
   dependencies = {

@@ -47,11 +47,12 @@
   "render-markdown.nvim": { "branch": "main", "commit": "48934b49a2363b49ae1d698ed4cb30fb79d7efe8" },
   "snacks.nvim": { "branch": "main", "commit": "fe7cfe9800a182274d0f868a74b7263b8c0c020b" },
   "text-case.nvim": { "branch": "main", "commit": "e898cfd46fa6cde0e83abb624a16e67d2ffc6457" },
+  "tiny-inline-diagnostic.nvim": { "branch": "main", "commit": "ecce93ff7db4461e942c03e0fcc64bd785df4057" },
   "todo-comments.nvim": { "branch": "main", "commit": "31e3c38ce9b29781e4422fc0322eb0a21f4e8668" },
   "tokyonight.nvim": { "branch": "main", "commit": "5da1b76e64daf4c5d410f06bcb6b9cb640da7dfd" },
   "trouble.nvim": { "branch": "main", "commit": "bd67efe408d4816e25e8491cc5ad4088e708a69a" },
   "ts-comments.nvim": { "branch": "main", "commit": "123a9fb12e7229342f807ec9e6de478b1102b041" },
-  "venv-selector.nvim": { "branch": "main", "commit": "5e1ccc57c880ace17ada6b1e216d6a051cb8dbf7" },
+  "venv-selector.nvim": { "branch": "main", "commit": "8cc1675869845abcb621fd8123d17841ddf519e0" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
   "yanky.nvim": { "branch": "main", "commit": "04fc42b94305d94948c9c197f679336668af3292" }
 }
