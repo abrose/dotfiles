@@ -58,6 +58,15 @@ tmux-jump() {
     fi
 }
 
+# Send a command to all active panes in all sessions and windows
+tmux-all() {
+  local cmd="${1:?Usage: tmux-all 'command'}"
+  for pane in $(tmux list-panes -a -F '#{session_name}:#{window_index}.#{pane_index}'); do
+    tmux send-keys -t "$pane" C-c
+    tmux send-keys -t "$pane" "$cmd" Enter
+  done
+}
+
 # Bind to alias for quick access
 alias tj='tmux-jump'
 alias ts='tms'
