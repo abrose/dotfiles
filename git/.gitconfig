@@ -16,6 +16,7 @@
   pl = pull --rebase
 	commit-retry = !git commit -eF .git/COMMIT_EDITMSG
 	clean-branches = !git fetch --prune && git branch -vv | grep \": gone]\" | grep -v \"\\*\" | awk \"{print \\$1}\" | xargs -r git branch -D
+  clone-for-worktrees = "!sh $HOME/tools/git-clone-bare-for-worktrees.sh"
 [diff]
   tool = vimdiff
 [difftool]
@@ -42,3 +43,5 @@
   conflictstyle = zdiff3
 [mergetool "vimdiff"]
   cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[rerere]
+	enabled = true
