@@ -63,7 +63,9 @@ alias tj='tmux-jump'
 alias ts='tms'
 
 # Path to your oh-my-zsh installation.
+
 export ZSH="$HOME/.oh-my-zsh"
+
 
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
@@ -330,6 +332,10 @@ function y() {
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:$HOME/.cache/lm-studio/bin"
 # End of LM Studio CLI section
+
+# Vi mode
+bindkey -v
+export KEYTIMEOUT=1
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
