@@ -231,6 +231,27 @@ alias fuck="git clean -fd && git restore ."
 
 alias claudify="$HOME/workspace/claude-container/run-claude.sh"
 
+# Git worktree helper functions
+# gwa - git worktree add
+# usage: gwa feat/APP-100-feature origin/main
+gwa() {
+  local branch="$1"
+  local base="${2:-HEAD}"
+  local dir="../${branch//\//-}"  # replace slashes with dashes
+  git worktree add -b "$branch" "$dir" "$base"
+}
+
+# gwc - git worktree checkout
+# usage:
+# gwc feat/APP-100-feature
+
+gwc() {
+  local branch="$1"
+  local dir="../${branch//\//-}"
+  git worktree add "$dir" "$branch"
+}
+
+
 # Pyenv initialization
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
