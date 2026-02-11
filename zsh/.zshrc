@@ -198,6 +198,9 @@ zstyle ':fzf-tab:*' switch-group '<' '>'
 # Default editor
 export EDITOR='nvim'
 
+# git-machete default editor
+export GIT_MACHETE_EDITOR='nvim'
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -237,8 +240,16 @@ alias claudify="$HOME/workspace/claude-container/run-claude.sh"
 gwa() {
   local branch="$1"
   local base="${2:-HEAD}"
-  local dir="../${branch//\//-}"  # replace slashes with dashes
+  local dir="../${branch//\//-}"
   git worktree add -b "$branch" "$dir" "$base"
+
+  # Symlink machete file if it exists
+  local bare_dir="$(git rev-parse --git-common-dir)"
+  local wt_name="${branch//\//-}"
+  if [[ -f "$bare_dir/machete" ]]; then
+    ln -s "$bare_dir/machete" "$bare_dir/worktrees/$wt_name/machete" 2>/dev/null
+    echo "Machete symlinked. Run 'git machete edit' to add '$branch' to the stack."
+  fi
 }
 
 # gwc - git worktree checkout
