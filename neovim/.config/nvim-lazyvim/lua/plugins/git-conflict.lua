@@ -6,7 +6,7 @@ return {
       ours = "<leader>ho",
       theirs = "<leader>ht",
       none = "<leader>h0",
-      both = "<leader>hb",
+      both = "<leader>hB",
       next = "]x",
       prev = "[x",
     },

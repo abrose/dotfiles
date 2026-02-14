@@ -220,7 +220,7 @@ alias st="git status"
 alias gsm="git switch main"
 alias rr="ranger"
 alias ll="ls -la"
- alias cd="z"
+alias cd="z"
 alias vim='NVIM_APPNAME=nvim-lazyvim nvim' 
 alias awsp='awsswitch; sp="$(cat ~/.awsswitch)"; if [ -z "$sp" ]; then unset AWS_PROFILE; else export AWS_PROFILE="$sp" && k ctx $(k ctx | grep $(cat ~/.awsswitch));fi'
 alias top="btm"
