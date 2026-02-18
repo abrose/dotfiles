@@ -240,12 +240,24 @@ alias claudify="$HOME/workspace/claude-container/run-claude.sh"
 gwa() {
   local branch="$1"
   local base="${2:-HEAD}"
-  local dir="../${branch//\//-}"
-  git worktree add -b "$branch" "$dir" "$base"
+  local dir_name="${branch//\//-}"
+  local bare_dir="$(git rev-parse --git-common-dir)"
+  local root_dir="$(dirname "$bare_dir")"
+  local dir="$root_dir/$dir_name"
+
+  if git show-ref --verify --quiet "refs/heads/$branch"; then
+    echo "Branch '$branch' exists locally, adding worktree..."
+    git worktree add "$dir" "$branch"
+  elif git show-ref --verify --quiet "refs/remotes/origin/$branch"; then
+    echo "Branch '$branch' exists on origin, adding worktree with tracking..."
+    git worktree add "$dir" "$branch"
+  else
+    echo "Creating new branch '$branch' from ${base}..."
+    git worktree add -b "$branch" "$dir" "$base"
+  fi
 
   # Symlink machete file if it exists
-  local bare_dir="$(git rev-parse --git-common-dir)"
-  local wt_name="${branch//\//-}"
+  local wt_name="${dir_name}"
   if [[ -f "$bare_dir/machete" ]]; then
     ln -s "$bare_dir/machete" "$bare_dir/worktrees/$wt_name/machete" 2>/dev/null
     echo "Machete symlinked. Run 'git machete edit' to add '$branch' to the stack."
@@ -258,10 +270,12 @@ gwa() {
 
 gwc() {
   local branch="$1"
-  local dir="../${branch//\//-}"
-  git worktree add "$dir" "$branch"
-}
+  local dir_name="${branch//\//-}"
+  local bare_dir="$(git rev-parse --git-common-dir)"
+  local root_dir="$(dirname "$bare_dir")"
 
+  git worktree add "$root_dir/$dir_name" "$branch"
+}
 
 # Pyenv initialization
 if command -v pyenv 1>/dev/null 2>&1; then
