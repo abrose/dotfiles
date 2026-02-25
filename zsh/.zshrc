@@ -377,6 +377,7 @@ eval "$(zoxide init zsh)"
 # eval "$(atuin init zsh --disable-up-arrow)"
 eval "$(git machete completion zsh)"
 
+
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	command yazi "$@" --cwd-file="$tmp"
