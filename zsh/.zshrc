@@ -166,6 +166,7 @@ plugins=(
   fast-syntax-highlighting
   fzf-zsh-plugin
   fzf-tab
+  zsh-better-npm-completion
 )
 
 source $ZSH/oh-my-zsh.sh
