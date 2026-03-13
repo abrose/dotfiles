@@ -6,7 +6,7 @@ return {
         sources = {
           explorer = {
             hidden = true, -- Show hidden/dotfiles by default
-            -- ignored = true,  -- Optionally also show gitignored files
+            ignored = true, -- Optionally also show gitignored files
             layout = {
               preset = "sidebar",
               preview = "main",

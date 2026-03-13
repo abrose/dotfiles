@@ -1,5 +1,12 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "permissions": {
+    "defaultMode": "plan"
+  },
+  "model": "opus",
   "statusLine": {
     "type": "command",
     "command": "input=$(cat); arrow='➜'; if [ $? -eq 0 ]; then arrow_color='\\033[1;32m'; else arrow_color='\\033[1;31m'; fi; dir_name=$(basename \"$(echo \"$input\" | jq -r '.workspace.current_dir')\"); git_branch=$(cd \"$(echo \"$input\" | jq -r '.workspace.current_dir')\" 2>/dev/null && git branch --show-current 2>/dev/null); printf \"${arrow_color}${arrow}\\033[0m \\033[36m${dir_name}\\033[0m\"; if [ -n \"$git_branch\" ]; then printf \" \\033[1;34mgit:(\\033[31m${git_branch}\\033[34m)\\033[0m\"; fi"
@@ -28,8 +35,5 @@
   "alwaysThinkingEnabled": true,
   "feedbackSurveyState": {
     "lastShownTime": 1754058299309
-  },
-  "env": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   }
 }
