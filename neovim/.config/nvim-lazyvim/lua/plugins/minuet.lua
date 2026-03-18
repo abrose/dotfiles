@@ -22,7 +22,7 @@ return {
         throttle = 1500,
         debounce = 600,
         virtualtext = {
-          auto_trigger_ft = { "*" }, -- trigger on all filetypes; restrict if too noisy
+          auto_trigger_ft = {},
           keymap = {
             accept = "<A-a>", -- accept full suggestion
             accept_line = "<A-l>", -- accept one line at a time

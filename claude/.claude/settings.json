@@ -36,5 +36,28 @@
   "feedbackSurveyState": {
     "lastShownTime": 1754058299309
   },
-  "effortLevel": "high"
+  "effortLevel": "high",
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/notify.sh stop"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/notify.sh notification"
+          }
+        ]
+      }
+    ]
+  }
 }
