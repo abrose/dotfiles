@@ -167,6 +167,7 @@ plugins=(
   fzf-zsh-plugin
   fzf-tab
   zsh-better-npm-completion
+  pnpm
 )
 
 source $ZSH/oh-my-zsh.sh
