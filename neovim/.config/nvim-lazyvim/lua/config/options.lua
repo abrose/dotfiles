@@ -3,3 +3,4 @@
 -- Add any additional options here
 
 vim.g.lazyvim_blink_main = true
+vim.opt.exrc = true
