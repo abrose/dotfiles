@@ -1,6 +1,6 @@
 return {
   "akinsho/git-conflict.nvim",
-  lazy = false,
+  event = "BufReadPost", -- defer from startup; only needed when viewing files
   opts = {
     default_mappings = true, -- let the plugin set up <Plug> mappings normally
   },

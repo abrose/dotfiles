@@ -1,6 +1,6 @@
 return {
   "johmsalas/text-case.nvim",
-  lazy = false,
+  event = "VeryLazy",
   config = true,
   cmd = {
     "Subs",
