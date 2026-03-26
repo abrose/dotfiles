@@ -3,6 +3,8 @@ return {
     "folke/snacks.nvim",
     opts = {
       picker = {
+        hidden = true,
+        ignored = true,
         sources = {
           explorer = {
             hidden = true, -- Show hidden/dotfiles by default
@@ -19,6 +21,7 @@ return {
           },
           files = {
             hidden = true,
+            ignored = true,
           },
         },
       },

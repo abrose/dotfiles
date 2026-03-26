@@ -8,6 +8,12 @@ vim.keymap.set("n", "<leader>fy", function()
   Snacks.notify.info("Copied: " .. path)
 end, { desc = "Copy Relative Path" })
 
+vim.keymap.set("n", "<leader>fY", function()
+  local path = vim.fn.expand("%:p") -- absolute path
+  vim.fn.setreg("+", path)
+  Snacks.notify.info("Copied: " .. path)
+end)
+
 vim.keymap.set("n", "<leader>am", function()
   require("minuet.virtualtext").action.toggle_auto_trigger()
 end, { desc = "Toggle Minuet Auto-completion" })
