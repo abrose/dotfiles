@@ -1,35 +1,16 @@
 return {
   "lewis6991/gitsigns.nvim",
-  keys = {
-    {
-      "<leader>hb",
-      "<cmd>Gitsigns blame_line<cr>",
-      desc = "Blame Line",
-    },
-    {
-      "<leader>hs",
-      "<cmd>Gitsigns stage_hunk<cr>",
-      desc = "Stage Hunk",
-    },
-    {
-      "<leader>hS",
-      "<cmd>Gitsigns stage_buffer<cr>",
-      desc = "Stage Buffer",
-    },
-    {
-      "<leader>hr",
-      "<cmd>Gitsigns reset_hunk<cr>",
-      desc = "Reset Hunk",
-    },
-    {
-      "<leader>hR",
-      "<cmd>Gitsigns reset_buffer<cr>",
-      desc = "Reset Buffer",
-    },
-    {
-      "<leader>hu",
-      "<cmd>Gitsigns undo_stage_hunk<cr>",
-      desc = "Undo Stage Hunk",
-    },
+  event = { "BufReadPost", "BufNewFile" },
+  enabled = true,
+  opts = {
+    on_attach = function(buf)
+      local gs = require("gitsigns")
+      local map = vim.keymap.set
+      map("n", "<leader>ghs", gs.stage_hunk, { buffer = buf, desc = "Stage Hunk" })
+      map("n", "<leader>ghS", gs.stage_buffer, { buffer = buf, desc = "Stage Buffer" })
+      map("n", "<leader>ghu", gs.stage_hunk, { buffer = buf, desc = "Undo Stage Hunk" })
+      map("n", "<leader>ghp", gs.preview_hunk, { buffer = buf, desc = "Preview Hunk" })
+      map("n", "<leader>ghr", gs.reset_hunk, { buffer = buf, desc = "Reset Hunk" })
+    end,
   },
 }
