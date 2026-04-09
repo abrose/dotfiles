@@ -2,8 +2,23 @@
 font-family = MesloLGS NF
 font-size = 14
 
-# macOS
+# Shell
+shell-integration = zsh
+
+# Cursor
+cursor-style = block
+cursor-style-blink = false
+
+# Mouse
+copy-on-select = clipboard
+mouse-hide-while-typing = true
+
+# Window
 macos-option-as-alt = true
+macos-titlebar-style = hidden
+
+# Performance
+window-vsync = false
 
 # Gruvbox Dark Soft palette (ported from kitty)
 background = #32302f
