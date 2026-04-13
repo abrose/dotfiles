@@ -17,7 +17,6 @@ mouse-shift-capture = always
 
 # Window
 macos-option-as-alt = true
-macos-titlebar-style = hidden
 
 # Performance
 window-vsync = false
