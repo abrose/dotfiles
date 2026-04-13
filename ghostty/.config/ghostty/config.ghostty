@@ -1,6 +1,7 @@
 # Font
 font-family = MesloLGS NF
 font-size = 14
+adjust-cell-width = 1
 
 # Shell
 shell-integration = zsh
@@ -12,6 +13,7 @@ cursor-style-blink = false
 # Mouse
 copy-on-select = clipboard
 mouse-hide-while-typing = true
+mouse-shift-capture = always
 
 # Window
 macos-option-as-alt = true
