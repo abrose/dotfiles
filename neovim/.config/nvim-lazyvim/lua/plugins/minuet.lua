@@ -38,6 +38,9 @@ return {
   -- 2. Wire minuet into blink.cmp as a manual-trigger source
   {
     "saghen/blink.cmp",
+    dependencies = {
+      "saghen/blink.lib",
+    },
     optional = true,
     opts = {
       keymap = {
