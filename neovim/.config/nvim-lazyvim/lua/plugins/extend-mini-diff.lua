@@ -1,5 +1,5 @@
 return {
-  "echasnovski/mini.diff",
+  "mini-diff/mini.diff",
   keys = {
     {
       "<leader>ghs",
