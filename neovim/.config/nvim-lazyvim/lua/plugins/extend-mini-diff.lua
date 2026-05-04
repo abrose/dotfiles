@@ -1,5 +1,8 @@
 return {
-  "mini-diff/mini.diff",
+  "nvim-mini/mini.diff",
+  version = "*",
+  event = "BufReadPost",
+  opts = {},
   keys = {
     {
       "<leader>ghs",
