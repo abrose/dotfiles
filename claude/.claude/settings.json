@@ -1,7 +1,39 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "alwaysThinkingEnabled": true,
-  "effortLevel": "high",
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "permissions": {
+    "defaultMode": "plan"
+  },
+  "model": "opus[1m]",
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/notify.sh notification"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/notify.sh stop"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "/Users/abrose/.claude/abtop-statusline.sh"
+  },
   "enabledPlugins": {
     "claude-code-setup@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
@@ -27,41 +59,12 @@
     "skill-creator@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true
   },
-  "env": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
-  },
+  "alwaysThinkingEnabled": true,
+  "effortLevel": "high",
   "feedbackSurveyState": {
     "lastShownTime": 1754058299309
   },
-  "hooks": {
-    "Notification": [
-      {
-        "hooks": [
-          {
-            "command": "~/.claude/hooks/notify.sh notification",
-            "type": "command"
-          }
-        ],
-        "matcher": "*"
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "command": "~/.claude/hooks/notify.sh stop",
-            "type": "command"
-          }
-        ]
-      }
-    ]
-  },
-  "model": "opus[1m]",
-  "permissions": {
-    "defaultMode": "plan"
-  },
-  "statusLine": {
-    "command": "/Users/abrose/.claude/abtop-statusline.sh",
-    "type": "command"
-  }
+  "editorMode": "vim",
+  "preferredNotifChannel": "kitty",
+  "teammateMode": "tmux"
 }

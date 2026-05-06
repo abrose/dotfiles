@@ -52,3 +52,5 @@ See @.claude/rules/context-awareness.md for the status bar system.
 
 When compacting, always preserve: test output, error messages, the current task description, and
 any architectural decisions made during this session. Also preserve which status bar state we're in.
+
+@RTK.md
