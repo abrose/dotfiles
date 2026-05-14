@@ -34,34 +34,4 @@ return {
       })
     end,
   },
-
-  -- 2. Wire minuet into blink.cmp as a manual-trigger source
-  {
-    "saghen/blink.cmp",
-    dependencies = {
-      "saghen/blink.lib",
-    },
-    optional = true,
-    opts = {
-      keymap = {
-        -- <Alt-y> manually triggers minuet completions
-        ["<A-y>"] = {
-          function(cmp)
-            cmp.show({ providers = { "minuet" } })
-          end,
-        },
-      },
-      sources = {
-        -- Don't add 'minuet' to `default` — that would auto-trigger on every
-        -- keystroke and rack up API calls. Manual-only is the sane default.
-        providers = {
-          minuet = {
-            name = "minuet",
-            module = "minuet.blink",
-            score_offset = 100, -- float minuet items to the top when present
-          },
-        },
-      },
-    },
-  },
 }
