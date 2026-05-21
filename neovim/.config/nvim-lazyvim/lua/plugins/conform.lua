@@ -10,7 +10,7 @@ return {
       },
       formatters = {
         yamlfmt = {
-          prepend_args = { "-formatter", "type=basic,force_quote_style=single" },
+          prepend_args = { "-formatter", "type=basic,retain_line_breaks_single=true,force_quote_style=double" },
         },
       },
     },
