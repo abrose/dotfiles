@@ -390,3 +390,14 @@ export KEYTIMEOUT=1
 
 # Starship prompt
 eval "$(starship init zsh)"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/abrose/.cache/lm-studio/bin"
+# End of LM Studio CLI section
+
+
+# remove aliases by running `pmg setup remove` or deleting the line 
+[ -f '/Users/abrose/.pmg.rc' ] && source '/Users/abrose/.pmg.rc'  # PMG source aliases
+
+# remove PMG shims by running `pmg setup remove` or deleting the line
+export PATH="/Users/abrose/.pmg/bin:$PATH"  # PMG shims
